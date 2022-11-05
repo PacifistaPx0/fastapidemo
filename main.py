@@ -27,7 +27,7 @@ def create_post(post:Post):
     print(post)
     value = 0
     if post.operation_type.lower() not in operation_list:
-        return Response(status_code=status.HTTP_406_NOT_ACCEPTABLE)
+        return Response(status_code=status.HTTP_404_NOT_FOUND)
     try:
         if post.operation_type.lower() == operation_type.multiplication.name:
             value = post.x * post.y
@@ -40,6 +40,6 @@ def create_post(post:Post):
             value = post.x - post.y
             return {"slackUsername": "pacifistapx0", "result": value, "operation_type":operation_type.subtraction.value}
     except ValueError:
-        raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, 
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
         detail="Operation not available")
     
