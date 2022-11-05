@@ -28,18 +28,15 @@ def create_post(post:Post):
     value = 0
     if post.operation_type.lower() not in operation_list:
         return Response(status_code=status.HTTP_404_NOT_FOUND)
-    try:
-        if post.operation_type.lower() == operation_type.multiplication.name:
-            value = post.x * post.y
-            return {"slackUsername": "pacifistapx0", "result": value, "operation_type":operation_type.multiplication.value}
-        elif post.operation_type.lower() == operation_type.addition.name:
-            value = post.x + post.y
-            return {"slackUsername": "pacifistapx0", "result": value, "operation_type":operation_type.addition.value}
-        else:
-            post.operation_type.lower() == operation_type.subtraction.name
-            value = post.x - post.y
-            return {"slackUsername": "pacifistapx0", "result": value, "operation_type":operation_type.subtraction.value}
-    except ValueError:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
-        detail="Operation not available")
-    
+
+    if post.operation_type.lower() == operation_type.multiplication.name:
+        value = post.x * post.y
+        return {"slackUsername": "pacifistapx0", "result": value, "operation_type":operation_type.multiplication.value}
+    elif post.operation_type.lower() == operation_type.addition.name:
+        value = post.x + post.y
+        return {"slackUsername": "pacifistapx0", "result": value, "operation_type":operation_type.addition.value}
+    else:
+        post.operation_type.lower() == operation_type.subtraction.name
+        value = post.x - post.y
+        return {"slackUsername": "pacifistapx0", "result": value, "operation_type":operation_type.subtraction.value}
+
