@@ -6,9 +6,9 @@ from pydantic import BaseModel
 app = FastAPI()
 
 class operation_type(Enum):
-    multiplication= 1
-    addition= 2
-    subtraction = 3
+    multiplication= "multiplication"
+    addition= "addition"
+    subtraction = "subtraction"
 
 class Post(BaseModel):
     operation_type: str
